@@ -11,39 +11,34 @@ namespace Inpsyde\WpUsersList;
  */
 abstract class AbstractSingleton
 {
-  /**
-   * Instance of the class
-   *
-   * @var object
-   */
-  private static $instance;
+    /**
+     * Instance of the class
+     *
+     * @var object
+     */
+    private static $instance;
 
-  /**
-   * Class constructor.
-   */
-  private function __construct()
-  {
-  }
-
-  /**
-   * Class instance.
-   *
-   * @return self
-   */
-  public static function getInstance(): self
-  {
-    if (!isset(self::$instance[static::class])) {
-      self::$instance[static::class] = new static();
-      self::$instance[static::class]->init();
+    /**
+     * Class constructor.
+     */
+    private function __construct()
+    {
     }
 
-    return self::$instance[static::class];
-  }
+    /**
+     * Class instance.
+     *
+     * @return self
+     */
+    public static function getInstance(): self
+    {
+        return self::$instance[static::class] ??= new static();
+    }
 
-  /**
-   * Init class component.
-   *
-   * @return void
-   */
-  abstract public function init(): void;
+    /**
+     * Init class component.
+     *
+     * @return void
+     */
+    abstract public function init(): void;
 }
