@@ -18,16 +18,13 @@ class WpUsersListRewriteRules extends AbstractSingleton
      */
     const PATH = 'users';
 
-    /**
-     * @inheritdoc
-     */
     public function init(): void
     {
         if (wp_installing()) {
             return;
         }
 
-        add_action('init', [$this, 'registerUsersRewriteRules']);
+        add_action('init', fn () => $this->registerUsersRewriteRules());
     }
 
     /**
