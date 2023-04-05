@@ -12,16 +12,11 @@ namespace Inpsyde\WpUsersList;
 class WpUsersList
 {
     /**
-     * @var array
-     */
-    private $wpUsersListComponents;
-
-    /**
      * WpUsersList constructor.
      *
      * @param array $wpUsersListComponents
      */
-    private function __construct(array $wpUsersListComponents)
+    private function __construct(private array $wpUsersListComponents)
     {
         $this->wpUsersListComponents = $wpUsersListComponents;
     }
