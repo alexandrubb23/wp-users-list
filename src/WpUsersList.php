@@ -11,13 +11,28 @@ namespace Inpsyde\WpUsersList;
  */
 class WpUsersList
 {
+    /**
+     * @var array
+     */
     private $wpUsersListComponents;
 
+    /**
+     * WpUsersList constructor.
+     *
+     * @param array $wpUsersListComponents
+     */
     private function __construct(array $wpUsersListComponents)
     {
         $this->wpUsersListComponents = $wpUsersListComponents;
     }
 
+    /**
+     * Class instance.
+     * 
+     * @param array $wpUsersListComponents
+     *
+     * @return WpUsersList
+     */
     public static function instance(array $wpUsersListComponents): self
     {
         static $instance;
@@ -30,6 +45,12 @@ class WpUsersList
         return $instance;
     }
 
+    /**
+     * Init class component.
+     *
+     * @return void
+     * @throws \InvalidArgumentException
+     */
     public function init(): void
     {
         if (wp_installing()) {
