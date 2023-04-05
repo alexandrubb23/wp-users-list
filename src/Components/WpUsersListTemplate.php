@@ -13,25 +13,25 @@ use Inpsyde\WpUsersList\AbstractSingleton;
  */
 class WpUsersListTemplate extends AbstractSingleton
 {
-	/**
-	 * @inheritdoc
-	 */
-	public function init(): void
-	{
-		add_filter('template_include', [$this, 'registerTemplate']);
-	}
+    /**
+     * @inheritdoc
+     */
+    public function init(): void
+    {
+        add_filter('template_include', fn ($template) => $this->registerTemplate($template));
+    }
 
-	/**
-	 * Register template for users list.
-	 *
-	 * @return void
-	 */
-	public function registerTemplate($template): string
-	{
-		if (get_query_var('users')) {
-			return plugin_dir_path(__DIR__) . '/templates/list-users-table-template.php';
-		}
+    /**
+     * Register template for users list.
+     *
+     * @return void
+     */
+    public function registerTemplate($template): string
+    {
+        if (get_query_var('users')) {
+            return plugin_dir_path(__DIR__) . '/templates/list-users-table-template.php';
+        }
 
-		return $template;
-	}
+        return $template;
+    }
 }
