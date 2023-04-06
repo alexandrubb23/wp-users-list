@@ -1,30 +1,33 @@
-<?php
-
-// -*- coding: utf-8 -*-
-
-wp_head();
+<?php # -*- coding: utf-8 -*-
 
 /**
  * Template Name: WP Users List - Users Table Template
  */
 
-$users = get_users();
+use Inpsyde\WpUsersList\Services\UsersService;
+
+wp_head();
+
+$users = UsersService::getUsers();
+if (empty($users)) {
+  return;
+}
 
 $tableHtml = <<<EOT
 <table>
   <tr>
     <th>ID</th>
     <th>Name</th>
-    <th>Email</th>
+    <th>Username</th>
   </tr>
 EOT;
 
 foreach ($users as $user) {
   $tableHtml .= <<<EOT
   <tr>
-    <td>{$user->ID}</td>
-    <td>{$user->display_name}</td>
-    <td>{$user->user_email}</td>
+    <td>{$user->id}</td>
+    <td>{$user->name}</td>
+    <td>{$user->username}</td>
   </tr>
 EOT;
 }
