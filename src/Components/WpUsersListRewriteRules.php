@@ -7,6 +7,7 @@ declare(strict_types=1);
 namespace Inpsyde\WpUsersList\Components;
 
 use Inpsyde\WpUsersList\AbstractSingleton;
+use Inpsyde\WpUsersList\Components\WpUsersListSettings;
 
 /**
  * Class WpUsersRewriteRules
@@ -15,11 +16,6 @@ use Inpsyde\WpUsersList\AbstractSingleton;
  */
 class WpUsersListRewriteRules extends AbstractSingleton
 {
-    /**
-     * @var string
-     */
-    const PATH = 'users';
-
     public function init(): void
     {
         if (wp_installing()) {
@@ -36,7 +32,10 @@ class WpUsersListRewriteRules extends AbstractSingleton
      */
     public function registerUsersRewriteRules(): void
     {
-        add_rewrite_rule(self::PATH . '/?', 'index.php?users=1', 'top');
-        add_rewrite_tag('%' . self::PATH . '%', '1');
+        $pageName = WpUsersListSettings::getPageName();
+
+
+        add_rewrite_rule($pageName . '/?', 'index.php?' . $pageName . '=1', 'top');
+        add_rewrite_tag('%' . $pageName . '%', '1');
     }
 }

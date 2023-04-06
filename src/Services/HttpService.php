@@ -1,16 +1,13 @@
-<?php # -*- coding: utf-8 -*-
+<?php
+
+// -*- coding: utf-8 -*-
 
 namespace Inpsyde\WpUsersList\Services;
 
+use Inpsyde\WpUsersList\Components\WpUsersListSettings;
+
 class HttpService
 {
-    /**
-     * Api endpoint.
-     *
-     * @var string
-     */
-    private string $apiEndpoint = 'https://jsonplaceholder.typicode.com';
-
     /**
      * Get request.
      *
@@ -19,7 +16,7 @@ class HttpService
      */
     public function get(string $url): \WP_Error|array
     {
-        $url = $this->apiEndpoint . $url;
+        $url = WpUsersListSettings::getApiEndpoint() . $url;
         $response = wp_remote_get($url);
         if (is_wp_error($response)) {
             return $response;

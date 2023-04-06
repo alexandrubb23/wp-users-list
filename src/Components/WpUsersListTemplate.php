@@ -28,7 +28,8 @@ class WpUsersListTemplate extends AbstractSingleton
      */
     public function registerTemplate($template): string
     {
-        if (!get_query_var('users')) {
+        $pageName = WpUsersListSettings::getPageName();
+        if (!get_query_var($pageName)) {
             return $template;
         }
 
