@@ -29,5 +29,8 @@
         "type:wordpress-plugin"
       ]
     }
+  },
+  "require-dev": {
+    "inpsyde/php-coding-standards": "^1.0"
   }
 }
