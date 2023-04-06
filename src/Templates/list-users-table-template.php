@@ -5,6 +5,9 @@
  */
 
 use Inpsyde\WpUsersList\Services\UsersService;
+use Inpsyde\WpUsersList\Components\WpUsersListTableStyle;
+
+WpUsersListTableStyle::getInstance()->init();
 
 wp_head();
 
