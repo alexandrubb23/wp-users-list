@@ -7,6 +7,7 @@ declare(strict_types=1);
 namespace Inpsyde\WpUsersList\Components;
 
 use Inpsyde\WpUsersList\AbstractSingleton;
+use Inpsyde\WpUsersList\Helpers\PluginDir;
 
 /**
  * Class WpUsersListTemplate
@@ -15,9 +16,6 @@ use Inpsyde\WpUsersList\AbstractSingleton;
  */
 class WpUsersListTemplate extends AbstractSingleton
 {
-    /**
-     * @inheritdoc
-     */
     public function init(): void
     {
         add_filter('template_include', fn ($template) => $this->registerTemplate($template));
@@ -26,14 +24,14 @@ class WpUsersListTemplate extends AbstractSingleton
     /**
      * Register template for users list.
      *
-     * @return void
+     * @return string
      */
     public function registerTemplate($template): string
     {
-        if (get_query_var('users')) {
-            return plugin_dir_path(__DIR__) . '/templates/list-users-table-template.php';
+        if (!get_query_var('users')) {
+            return $template;
         }
 
-        return $template;
+        return PluginDir::getPath() . 'templates/list-users-table-template.php';
     }
 }
