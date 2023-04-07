@@ -33,8 +33,12 @@ class WpUsersListRewriteRules extends AbstractSingleton
     public function registerUsersRewriteRules(): void
     {
         $pageName = WpUsersListOptions::getPageName();
+        if (!$pageName) {
+            return;
+        }
 
         add_rewrite_rule($pageName . '/?', 'index.php?' . $pageName . '=1', 'top');
         add_rewrite_tag('%' . $pageName . '%', '1');
+        flush_rewrite_rules();
     }
 }

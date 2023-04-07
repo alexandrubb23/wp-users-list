@@ -40,11 +40,7 @@ composer require alexandrubb23/wp-users-list
 
 To activate the plugin, log in to your WordPress Admin panel and navigate to the "Installed Plugins" page. You should see the "WP Users List" Plugin. Click on "Activate".
 
-Once the plugin is activated, an alert will appear at the top of the page indicating that the plugin options are missing.
-
 ![Installed Plugins](https://i.ibb.co/SfwmkYL/Screenshot-2023-04-07-at-11-43-27.png)
-
-You should see the `WP Users List` Plugin. Click on `Activate`
 
 Once the plugin is getting active, an alert will appear on top of the page who tell us that the plugin options are missing
 
@@ -59,11 +55,7 @@ You can customize the WP Users List Plugin by modifying the settings on the plug
 The WP Users List Plugin has two input fields:
 
 - API Endpoint: Here you can define the API endpoint (e.g. https://jsonplaceholder.typicode.com).
-- Page Name: Here you can define the page where the user list will be displayed (e.g. http://domain.com/users-table).
-
-## Setting up Permalinks
-
-To register your newly created page, navigate to the "Permalink Settings" page and select "Post Name". Once "Post Name" is selected, click on "Save".
+- Page Name: Here you can define the page where the user list will be displayed (e.g.users-table).
 
 ## Usage
 
