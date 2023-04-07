@@ -7,7 +7,7 @@ declare(strict_types=1);
 namespace Inpsyde\WpUsersList\Components;
 
 use Inpsyde\WpUsersList\AbstractSingleton;
-use Inpsyde\WpUsersList\Components\WpUsersListSettings;
+use Inpsyde\WpUsersList\Settings\WpUsersListOptions;
 
 /**
  * Class WpUsersRewriteRules
@@ -32,8 +32,7 @@ class WpUsersListRewriteRules extends AbstractSingleton
      */
     public function registerUsersRewriteRules(): void
     {
-        $pageName = WpUsersListSettings::getPageName();
-
+        $pageName = WpUsersListOptions::getPageName();
 
         add_rewrite_rule($pageName . '/?', 'index.php?' . $pageName . '=1', 'top');
         add_rewrite_tag('%' . $pageName . '%', '1');

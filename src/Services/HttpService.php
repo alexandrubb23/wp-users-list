@@ -4,7 +4,7 @@
 
 namespace Inpsyde\WpUsersList\Services;
 
-use Inpsyde\WpUsersList\Components\WpUsersListSettings;
+use Inpsyde\WpUsersList\Settings\WpUsersListOptions;
 
 class HttpService
 {
@@ -16,7 +16,7 @@ class HttpService
      */
     public function get(string $url): \WP_Error|array
     {
-        $url = WpUsersListSettings::getApiEndpoint() . $url;
+        $url = WpUsersListOptions::getApiEndpoint() . $url;
         $response = wp_remote_get($url);
         if (is_wp_error($response)) {
             return $response;

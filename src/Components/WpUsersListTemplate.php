@@ -8,6 +8,7 @@ namespace Inpsyde\WpUsersList\Components;
 
 use Inpsyde\WpUsersList\AbstractSingleton;
 use Inpsyde\WpUsersList\Helpers\PluginDir;
+use Inpsyde\WpUsersList\Settings\WpUsersListOptions;
 
 /**
  * Class WpUsersListTemplate
@@ -28,7 +29,7 @@ class WpUsersListTemplate extends AbstractSingleton
      */
     public function registerTemplate($template): string
     {
-        $pageName = WpUsersListSettings::getPageName();
+        $pageName = WpUsersListOptions::getPageName();
         if (!get_query_var($pageName)) {
             return $template;
         }
