@@ -8,63 +8,63 @@ namespace Inpsyde\WpUsersList\Settings;
 
 class WpUsersListInitPluginSettingsForm
 {
-	/**
-	 * Register the plugin settings fields.
-	 * 
-	 * @return void
-	 */
-	public static function registerFields(): void
-	{
-		$formFields = self::formFields();
-		foreach ($formFields as $field => $options) {
-			add_settings_field(
-				$field,
-				$options['label'],
-				fn () => self::{$field}(),
-				WpUsersListOptionGroup::OPTION_GROUP_PAGE,
-				WpUsersListOptionGroup::OPTION_GROUP_SECTION
-			);
-		}
-	}
+    /**
+     * Register the plugin settings fields.
+     * 
+     * @return void
+     */
+    public static function registerFields(): void
+    {
+        $formFields = self::formFields();
+        foreach ($formFields as $field => $options) {
+            add_settings_field(
+                $field,
+                $options['label'],
+                fn () => self::{$field}(),
+                WP_USERS_LIST_PLUGIN_PAGE,
+                WP_USERS_LIST_PLUGIN_SETTINGS
+            );
+        }
+    }
 
-	/**
-	 * Html input.
-	 *
-	 * @param string $field
-	 * @param string $type
-	 * @return string
-	 */
-	private static function htmlInput(string $field): string
-	{
+    /**
+     * Html input.
+     *
+     * @param string $field
+     * @param string $type
+     * @return string
+     */
+    private static function htmlInput(string $field): string
+    {
 
-		$name = WpUsersListOptionGroup::OPTION_GROUP . "[$field]";
-		$type = self::formFields()[$field]['type'];
-		$value = esc_attr(WpUsersListOptions::getOption($field));
+        $name = WP_USERS_LIST_PLUGIN_OPTION_GROUP . "[$field]";
+        $type = self::formFields()[$field]['type'];
+        $value = esc_attr(WpUsersListOptions::getOption($field));
 
-		return "<input id='" . $field . "' name='" . $name . "' type='" . $type . "' value='" . $value . "' />";
-	}
+        return "<input id='" . $field . "' name='" . $name . "' type='" . $type . "' value='" . $value . "' />";
+    }
 
-	/**
-	 * Call the html input.
-	 * 
-	 * @param string $name
-	 * @param array $arguments
-	 * @return void
-	 */
-	public static function __callStatic(string $name, array $arguments): void
-	{
-		if (isset(self::formFields()[$name])) {
-			echo self::htmlInput($name);
-		}
-	}
+    /**
+     * Call the html input.
+     * 
+     * @param string $name
+     * @param array $arguments
+     * @return void
+     */
+    public static function __callStatic(string $name, array $arguments): void
+    {
+        if (isset(self::formFields()[$name])) {
+            echo self::htmlInput($name);
+        }
+    }
 
-	/**
-	 * Get the form fields.
-	 * 
-	 * @return array
-	 */
-	private static function formFields(): array
-	{
-		return WpUsersListFormFields::FIELDS;
-	}
+    /**
+     * Get the form fields.
+     * 
+     * @return array
+     */
+    private static function formFields(): array
+    {
+        return WpUsersListFormFields::FIELDS;
+    }
 }

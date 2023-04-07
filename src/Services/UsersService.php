@@ -6,6 +6,8 @@ declare(strict_types=1);
 
 namespace Inpsyde\WpUsersList\Services;
 
+use Inpsyde\WpUsersList\Settings\WpUsersListAlertSettings;
+
 class UsersService
 {
     /**
@@ -46,6 +48,7 @@ class UsersService
             return $usersService->getAllUsers();
         } catch (\Exception $e) {
             // Log or handle the exception
+            WpUsersListAlertSettings::alert();
         }
 
         return [];

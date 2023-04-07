@@ -32,7 +32,7 @@ class WpUsersListOptions
      */
     public static function getOptions(): array
     {
-        $options = get_option(WpUsersListOptionGroup::OPTION_GROUP);
+        $options = get_option(WP_USERS_LIST_PLUGIN_OPTION_GROUP);
         $options = is_array($options) ? $options : [];
 
         return $options;

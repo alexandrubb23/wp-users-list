@@ -28,6 +28,6 @@ class WpUsersListTableStyle extends AbstractSingleton
      */
     public function registerStyle(): void
     {
-        wp_enqueue_style('users-listing-table', PluginDir::getUrl() . 'css/style.css', array(), '1.0.0', 'all');
+        wp_enqueue_style('users-listing-table', PluginDir::getUrl() . 'css/style.css', array(), WP_USERS_LIST_VERSION, 'all');
     }
 }

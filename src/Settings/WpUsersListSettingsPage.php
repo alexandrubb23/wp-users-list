@@ -19,7 +19,7 @@ class WpUsersListSettingsPage
             'WP Users List',
             'WP Users List',
             'manage_options',
-            'wp-users-list-plugin',
+            WP_USERS_LIST_PLUGIN_MENU_SLUG,
             fn () => self::settingsPage()
         );
     }
@@ -35,8 +35,8 @@ class WpUsersListSettingsPage
         <h2>Users list Plugin Settings</h2>
         <form action="options.php" method="post">
             <?php
-            settings_fields(WpUsersListOptionGroup::OPTION_GROUP);
-            do_settings_sections(WpUsersListOptionGroup::OPTION_GROUP_PAGE); ?>
+            settings_fields(WP_USERS_LIST_PLUGIN_OPTION_GROUP);
+            do_settings_sections(WP_USERS_LIST_PLUGIN_PAGE); ?>
             <input name="submit" class="button button-primary" type="submit" value="<?php esc_attr_e('Save'); ?>" />
         </form>
 <?php

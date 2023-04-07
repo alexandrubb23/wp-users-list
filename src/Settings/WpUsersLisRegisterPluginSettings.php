@@ -16,16 +16,16 @@ class WpUsersLisRegisterPluginSettings
 	public static function registerSettings(): void
 	{
 		register_setting(
-			self::optionGroup(),
-			self::optionGroup(),
+			WP_USERS_LIST_PLUGIN_OPTION_GROUP,
+			WP_USERS_LIST_PLUGIN_OPTION_GROUP,
 			fn (array $inputs) => self::validateMethod($inputs)
 		);
 
 		add_settings_section(
-			WpUsersListOptionGroup::OPTION_GROUP_SECTION,
+			WP_USERS_LIST_PLUGIN_SETTINGS,
 			'Users List Settings',
 			fn () => self::infoPluginOptions(),
-			WpUsersListOptionGroup::OPTION_GROUP_PAGE
+			WP_USERS_LIST_PLUGIN_PAGE
 		);
 	}
 
@@ -58,8 +58,8 @@ class WpUsersLisRegisterPluginSettings
 	{
 		if (empty($field)) {
 			add_settings_error(
-				self::optionGroup(),
-				self::optionGroup(),
+				WP_USERS_LIST_PLUGIN_OPTION_GROUP,
+				WP_USERS_LIST_PLUGIN_OPTION_GROUP,
 				'Please fill the ' . $label . ' field',
 				'error'
 			);
@@ -74,15 +74,5 @@ class WpUsersLisRegisterPluginSettings
 	public static function infoPluginOptions(): void
 	{
 		echo '<p>Here you can set all the options for WP Users List</p>';
-	}
-
-	/**
-	 * Get the option group name.
-	 *
-	 * @return string
-	 */
-	private static function optionGroup(): string
-	{
-		return WpUsersListOptionGroup::OPTION_GROUP;
 	}
 }

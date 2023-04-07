@@ -15,15 +15,31 @@ class  WpUsersListAlertSettings
      */
     public static function alert(): void
     {
-        $options = get_option(WpUsersListOptionGroup::OPTION_GROUP);
-        $falsyKeys = is_array($options)
-            ? array_keys(array_filter($options, fn ($value) => !$value))
-            : true;
+        $options = get_option(WP_USERS_LIST_PLUGIN_OPTION_GROUP);
+        $falsyKeys = match (is_array($options)) {
+            true => array_keys(array_filter($options, fn ($value) => !$value)),
+            default => true,
+        };
 
         if (!empty($falsyKeys)) {
-            $pluginSettingsUrl = esc_url(admin_url('options-general.php?page=wp-users-list-plugin'));
-
-            echo '<div class="notice notice-error is-dismissible"><p>Please define all the settings in <a href="' . $pluginSettingsUrl . '">WP Users List settings page</a></p></div>';
+            static::displayAlert();
         }
+    }
+
+    /**
+     * Display alert.
+     *
+     * @param string $message
+     * @return void
+     */
+    public static function displayAlert(): void
+    {
+        $pluginSettingsUrl = esc_url(url: admin_url('options-general.php?page=' . WP_USERS_LIST_PLUGIN_MENU_SLUG));
+
+        $styleClass = $styleClass ?? (!is_admin() ? 'alert danger' : 'notice notice-error is-dismissible');
+
+        $message = '<p>Please define all the settings in <a href="' . $pluginSettingsUrl . '">WP Users List settings page</a></p>';
+
+        echo '<div class="' . $styleClass . '">' . $message . '</div>';
     }
 }
