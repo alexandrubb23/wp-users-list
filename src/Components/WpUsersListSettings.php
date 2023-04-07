@@ -2,6 +2,8 @@
 
 // -*- coding: utf-8 -*-
 
+declare(strict_types=1);
+
 namespace Inpsyde\WpUsersList\Components;
 
 use Inpsyde\WpUsersList\AbstractSingleton;

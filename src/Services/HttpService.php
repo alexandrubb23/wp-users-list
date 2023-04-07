@@ -2,6 +2,8 @@
 
 // -*- coding: utf-8 -*-
 
+declare(strict_types=1);
+
 namespace Inpsyde\WpUsersList\Services;
 
 use Inpsyde\WpUsersList\Settings\WpUsersListOptions;
