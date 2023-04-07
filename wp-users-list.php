@@ -1,4 +1,6 @@
-<?php # -*- coding: utf-8 -*-
+<?php
+
+// -*- coding: utf-8 -*-
 
 /**
  * Plugin Name: WP Users List

@@ -1,4 +1,6 @@
-<?php # -*- coding: utf-8 -*-
+<?php
+
+// -*- coding: utf-8 -*-
 
 /**
  * Template Name: WP Users List - Users Table Template
