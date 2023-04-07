@@ -6,6 +6,11 @@ declare(strict_types=1);
 
 namespace Inpsyde\WpUsersList\Settings;
 
+/**
+ * Class WpUsersListInitPluginSettingsForm
+ *
+ * @package Inpsyde\WpUsersList
+ */
 class WpUsersListInitPluginSettingsForm
 {
     /**

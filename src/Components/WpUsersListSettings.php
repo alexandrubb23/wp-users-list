@@ -11,6 +11,11 @@ use Inpsyde\WpUsersList\Settings\WpUsersListSettingsPage;
 use Inpsyde\WpUsersList\Settings\WpUsersListAlertSettings;
 use Inpsyde\WpUsersList\Settings\WpUsersListInitPluginSettings;
 
+/**
+ * Class WpUsersListSettings
+ *
+ * @package Inpsyde\WpUsersList
+ */
 class WpUsersListSettings extends AbstractSingleton
 {
     /**

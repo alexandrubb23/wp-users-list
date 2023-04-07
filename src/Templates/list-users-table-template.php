@@ -8,8 +8,10 @@
 
 use Inpsyde\WpUsersList\Services\UsersService;
 use Inpsyde\WpUsersList\Components\WpUsersListTableStyle;
+use Inpsyde\WpUsersList\Components\WpUsersListTableScript;
 
 WpUsersListTableStyle::getInstance()->init();
+WpUsersListTableScript::getInstance()->init();
 
 wp_head();
 
@@ -19,7 +21,7 @@ if (empty($users)) {
 }
 
 $tableHtml = <<<EOT
-<table>
+<table id="users">
   <tr>
     <th>ID</th>
     <th>Name</th>
@@ -30,9 +32,9 @@ EOT;
 foreach ($users as $user) {
   $tableHtml .= <<<EOT
   <tr>
-    <td>{$user->id}</td>
-    <td>{$user->name}</td>
-    <td>{$user->username}</td>
+    <td class="user-id"><a href="#">{$user->id}</a></td>
+    <td class="user-name"><a href="#">{$user->name}</a></td>
+    <td class="user-username"><a href="#">{$user->username}</a></td>
   </tr>
 EOT;
 }

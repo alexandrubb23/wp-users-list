@@ -6,6 +6,11 @@ declare(strict_types=1);
 
 namespace Inpsyde\WpUsersList\Settings;
 
+/**
+ * Class WpUsersListFormFields
+ *
+ * @package Inpsyde\WpUsersList
+ */
 abstract class WpUsersListFormFields
 {
     /**

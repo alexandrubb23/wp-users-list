@@ -6,6 +6,11 @@ declare(strict_types=1);
 
 namespace Inpsyde\WpUsersList\Settings;
 
+/**
+ * Class WpUsersListOptions
+ *
+ * @package Inpsyde\WpUsersList
+ */
 class WpUsersListOptions
 {
     /**
