@@ -11,7 +11,7 @@ namespace Inpsyde\WpUsersList\Settings;
  *
  * @package Inpsyde\WpUsersList
  */
-class  WpUsersListAlertSettings
+class WpUsersListAlertSettings
 {
     /**
      * Alert the user if the plugin settings are not defined.
@@ -39,6 +39,11 @@ class  WpUsersListAlertSettings
      */
     public static function displayAlert(): void
     {
+        $isWpUsersListSettingsPage = $_GET['page'] ?? null === WP_USERS_LIST_PLUGIN_MENU_SLUG;
+        if ($isWpUsersListSettingsPage) {
+            return;
+        }
+
         $pluginSettingsUrl = esc_url(url: admin_url('options-general.php?page=' . WP_USERS_LIST_PLUGIN_MENU_SLUG));
 
         $styleClass = $styleClass ?? (!is_admin() ? 'alert danger' : 'notice notice-error is-dismissible');

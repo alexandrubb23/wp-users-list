@@ -23,7 +23,7 @@ class WpUsersListOptions
     public static function __callStatic(string $name, array $arguments): string
     {
         $name = lcfirst(str_replace('get', '', $name));
-        if (isset(WpUsersListFormFields::FIELDS[$name])) {
+        if (isset(WpUsersListInitPluginSettingsForm::FIELDS[$name])) {
             return self::getOption($name);
         }
 
@@ -32,7 +32,7 @@ class WpUsersListOptions
 
     /**
      * Get all the options.
-     * 
+     *
      * @return array
      */
     public static function getOptions(): array

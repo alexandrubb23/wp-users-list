@@ -20,7 +20,6 @@ class WpUsersListInitPluginSettings
      */
     public static function init(): void
     {
-        WpUsersLisRegisterPluginSettings::registerSettings();
-        WpUsersListInitPluginSettingsForm::registerFields();
+        WpUsersListRegisterPluginSettings::registerSettings();
     }
 }

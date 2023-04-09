@@ -26,7 +26,7 @@ class WpUsersListSettings extends AbstractSingleton
     public function init(): void
     {
         add_action('admin_init', fn () => WpUsersListInitPluginSettings::init());
-        add_action('admin_menu',  fn () => WpUsersListSettingsPage::options());
+        add_action('admin_menu', fn () => WpUsersListSettingsPage::options());
         add_action('admin_notices', fn () => WpUsersListAlertSettings::alert());
     }
 }

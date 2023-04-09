@@ -28,6 +28,6 @@ class WpUsersListTableScript extends AbstractSingleton
      */
     public function registerScript(): void
     {
-        wp_enqueue_script('wp-users-list-script',  PluginDir::getUrl() . 'js/script.js', array('jquery'), WP_USERS_LIST_VERSION, true);
+        wp_enqueue_script('wp-users-list-script', PluginDir::getUrl() . 'js/script.js', array('jquery'), WP_USERS_LIST_VERSION, true);
     }
 }

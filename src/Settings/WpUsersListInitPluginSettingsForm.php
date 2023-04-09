@@ -14,14 +14,36 @@ namespace Inpsyde\WpUsersList\Settings;
 class WpUsersListInitPluginSettingsForm
 {
     /**
+     * Form fields.
+     *
+     * @var array
+     */
+    public const FIELDS = [
+        'apiEndpoint' => [
+            'label' => 'API Endpoint',
+            'type' => 'text',
+        ],
+        'pageName' => [
+            'label' => 'Page name',
+            'type' => 'text',
+        ]
+    ];
+
+    /**
+     * Submit button label.
+     *
+     * @var string
+     */
+    private const SUBMIT_BUTTON_LABEL = 'Save';
+
+    /**
      * Register the plugin settings fields.
-     * 
+     *
      * @return void
      */
-    public static function registerFields(): void
+    public static function addFormFields(): void
     {
-        $formFields = self::formFields();
-        foreach ($formFields as $field => $options) {
+        foreach (self::FIELDS as $field => $options) {
             add_settings_field(
                 $field,
                 $options['label'],
@@ -41,35 +63,81 @@ class WpUsersListInitPluginSettingsForm
      */
     private static function htmlInput(string $field): string
     {
-
+        $type = self::FIELDS[$field]['type'];
         $name = WP_USERS_LIST_PLUGIN_OPTION_GROUP . "[$field]";
-        $type = self::formFields()[$field]['type'];
         $value = esc_attr(WpUsersListOptions::getOption($field));
 
-        return "<input id='" . $field . "' name='" . $name . "' type='" . $type . "' value='" . $value . "' />";
+        $input =
+            sprintf(
+                __('<input id="%s" name="%s" type="%s" value="%s" />', 'wp-users-list'),
+                $field,
+                $name,
+                $type,
+                $value
+            );
+
+        return $input;
     }
 
     /**
      * Call the html input.
-     * 
+     *
      * @param string $name
      * @param array $arguments
      * @return void
      */
     public static function __callStatic(string $name, array $arguments): void
     {
-        if (isset(self::formFields()[$name])) {
+        if (isset(self::FIELDS[$name])) {
             echo self::htmlInput($name);
         }
     }
 
     /**
-     * Get the form fields.
-     * 
-     * @return array
+     * Settings page.
+     *
+     * @return void
      */
-    private static function formFields(): array
+    public static function form(): void
     {
-        return WpUsersListFormFields::FIELDS;
+        ?>
+        <h2>Users list Plugin Settings</h2>
+        <form action="options.php" method="post">
+            <?php
+            self::addFormFields();
+            settings_fields(WP_USERS_LIST_PLUGIN_OPTION_GROUP);
+            do_settings_sections(WP_USERS_LIST_PLUGIN_PAGE);
+            ?>
+            <input name="submit" class="button button-primary" type="submit" value="<?php esc_attr_e(self::SUBMIT_BUTTON_LABEL); ?>" />
+        </form>
+        <?php
+    }
+
+    /**
+     * Validate the form fields.
+     *
+     * @return callable
+     */
+    public static function validate(): callable
+    {
+        return function (array $inputs) {
+            foreach ($inputs as $field => $value) {
+                if (empty($value)) {
+                    add_settings_error(
+                        WP_USERS_LIST_PLUGIN_OPTION_GROUP,
+                        $field,
+                        sprintf(
+                            __('The field %s is required', 'wp-users-list'),
+                            self::FIELDS[$field]['label']
+                        ),
+                        'error'
+                    );
+                }
+            }
+
+            $stripped = array_map(fn ($value) => rtrim($value, '/'), $inputs);
+
+            return $stripped;
+        };
     }
 }

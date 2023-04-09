@@ -8,7 +8,7 @@ namespace Inpsyde\WpUsersList;
 
 /**
  * Class WpUsersList
- * 
+ *
  * @package Inpsyde\WpUsersList
  */
 class WpUsersList
@@ -25,7 +25,7 @@ class WpUsersList
 
     /**
      * Class instance.
-     * 
+     *
      * @param array $wpUsersListComponents
      *
      * @return WpUsersList
