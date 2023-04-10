@@ -6,7 +6,7 @@
  * Plugin Name: WP Users List
  * Plugin URI: https://github.com/alexandrubb23/wp-users-list
  * Description: A simple plugin to display a list of users.
- * Version: 1.10.10
+ * Version: 1.11.10
  * Author: Alexandru Barbulescu
  * AUTHOR URI: alex_bb23@yahoo.co.uk
  * License: MIT
@@ -14,7 +14,7 @@
 
 namespace Inpsyde\WpUsersList;
 
-define('WP_USERS_LIST_VERSION', '1.10.10');
+define('WP_USERS_LIST_VERSION', '1.11.10');
 define('WP_USERS_LIST_PLUGIN_OPTION_GROUP', 'wp_users_list_plugin_options');
 define('WP_USERS_LIST_PLUGIN_SETTINGS', 'wp_users_list_settings');
 define('WP_USERS_LIST_PLUGIN_PAGE', 'wp_users_list_plugin');
