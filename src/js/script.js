@@ -3,8 +3,26 @@ jQuery(document).ready(function ($) {
         e.preventDefault();
 
         const tdElement = jQuery(this).closest('td');
-        const tdClass = tdElement.attr('class');
+        const fieldName = tdElement.attr('class');
 
-        alert(`Get user by ${tdClass} => ${e.target.text}`);
+        const { action, url } = ajaxObject;
+
+        jQuery.ajax({
+            url,
+            type: 'POST',
+            data: {
+                action,
+                data: {
+                    fieldName,
+                    fieldValue: e.target.text,
+                },
+            },
+            success: function (response) {
+                alert(JSON.stringify(response));
+            },
+            error: function (xhr, status, error) {
+                console.log(xhr);
+            },
+        });
     });
 });

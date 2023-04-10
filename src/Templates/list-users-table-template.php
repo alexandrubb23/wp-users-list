@@ -12,7 +12,7 @@ wp_head();
 
 $users = UsersService::getUsers();
 if (empty($users)) {
-  return;
+    return;
 }
 
 $tableHtml = <<<EOT
@@ -25,7 +25,7 @@ $tableHtml = <<<EOT
 EOT;
 
 foreach ($users as $user) {
-  $tableHtml .= <<<EOT
+    $tableHtml .= <<<EOT
   <tr>
     <td class="user-id"><a href="#">{$user->id}</a></td>
     <td class="user-name"><a href="#">{$user->name}</a></td>

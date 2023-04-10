@@ -9,7 +9,7 @@ use Inpsyde\WpUsersList\Settings\WpUsersListOptions;
 
 /**
  * Check if the current page is the one passed as argument.
- * 
+ *
  * @param string $pageName
  * @return bool
  */
@@ -22,7 +22,7 @@ function wp_users_list_is_current_page(string $pageName): bool
 
 /**
  * Check if the current page is the one set in the plugin settings.
- * 
+ *
  * @return bool
  */
 function wp_users_list_is_listings_page(): bool

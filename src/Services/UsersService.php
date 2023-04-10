@@ -20,6 +20,26 @@ class UsersService
         $this->httpService = $httpService;
     }
 
+
+    /**
+     * Request handler.
+     *
+     * @return void
+     */
+    public static function getUsersHandler()
+    {
+        // Here we can handle $_POST data and search depending on the data passed
+        // e.g. By user id, by user name, by user email, etc.
+        $result = array(
+            'success' => true,
+            'data' => self::getUsers()
+        );
+
+        wp_send_json($result);
+
+        wp_die();
+    }
+
     /**
      * Get users.
      *
