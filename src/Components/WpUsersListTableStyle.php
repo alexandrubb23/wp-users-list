@@ -8,6 +8,7 @@ namespace Inpsyde\WpUsersList\Components;
 
 use Inpsyde\WpUsersList\AbstractSingleton;
 use Inpsyde\WpUsersList\Helpers\PluginDir;
+use Inpsyde\WpUsersList\Settings\WpUsersListOptions;
 
 /**
  * Class WpUsersListTableStyle
@@ -28,6 +29,16 @@ class WpUsersListTableStyle extends AbstractSingleton
      */
     public function registerStyle(): void
     {
-        wp_enqueue_style('users-listing-table', PluginDir::getUrl() . 'css/style.css', array(), WP_USERS_LIST_VERSION, 'all');
+        if (!wp_users_list_is_listings_page()) {
+            return;
+        }
+
+        wp_enqueue_style(
+            'users-listing-table',
+            PluginDir::getUrl() . 'css/style.css',
+            array(),
+            WP_USERS_LIST_VERSION,
+            'all'
+        );
     }
 }

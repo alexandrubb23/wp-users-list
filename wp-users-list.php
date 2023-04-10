@@ -24,11 +24,19 @@ if (!class_exists(WpUsersList::class) && is_readable(__DIR__ . '/vendor/autoload
     require_once __DIR__ . '/vendor/autoload.php';
 }
 
-use Inpsyde\WpUsersList\Components\{WpUsersListRewriteRules, WpUsersListSettings, WpUsersListTemplate};
+use Inpsyde\WpUsersList\Components\{
+    WpUsersListRewriteRules,
+    WpUsersListSettings,
+    WpUsersListTableScript,
+    WpUsersListTableStyle,
+    WpUsersListTemplate,
+};
 
 $wpUsersListComponents = [
-    WpUsersListSettings::getInstance(),
     WpUsersListRewriteRules::getInstance(),
+    WpUsersListSettings::getInstance(),
+    WpUsersListTableScript::getInstance(),
+    WpUsersListTableStyle::getInstance(),
     WpUsersListTemplate::getInstance(),
 ];
 
