@@ -20,6 +20,22 @@ class UsersService
         $this->httpService = $httpService;
     }
 
+    /**
+     * Instance of the class.
+     *
+     * @return self
+     */
+    public static function getInstance(): self
+    {
+        static $instance;
+
+        if (null === $instance) {
+            $instance = new self(new HttpService());
+        }
+
+        return $instance;
+    }
+
 
     /**
      * Request handler.
@@ -62,9 +78,8 @@ class UsersService
      */
     public static function getUsers(): \WP_Error|array
     {
-        $usersService = new UsersService(new HttpService());
-
         try {
+            $usersService = UsersService::getInstance();
             return $usersService->getAllUsers();
         } catch (\Exception $e) {
             // Log or handle the exception
